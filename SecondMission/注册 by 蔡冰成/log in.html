@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>scun网 登陆</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+	<style>
+		.main{
+			width:80%;
+			height:100%;
+			background-color:#ffcc00;
+			border-left:3px solid #ffffff;
+			border-right:3px solid #ffffff;
+			text-align:center;
+			position:absolute;
+			left:10%;
+			top:0;
+				}
+		.denglu{
+			border-radius:20px;
+			border:5px solid #a1a1a1;
+			background-color:#ffffff;
+			width:250px;
+			height:250px;
+				}
+		body{
+			background-color:#ff3399;
+			}
+		.wj{
+			font-size:0.5em;
+			}
+		a.wj1{
+			color:#ababab;
+			text-decoration:none;
+			}
+	</style>
+	<script>
+		function zhanghao()
+		{	
+			var n=document.getElementById("pass").value;
+			var m=document.getElementById("username").value;
+			var mima=n.length;
+			
+			if((m<=19999999999)&&(m>=10000000000))
+				{
+					alert("请输入正确的手机号码！");
+					return false;
+				};
+			
+			/*if(mima<8)
+				{
+				alert("请输入正确的密码！\n密码长度应为8~16位！");
+				return false;
+				};*/
+		}
+		function chzhi()
+		{
+			var n=document.getElementById("pass").value;
+			var m=document.getElementById("username").value;
+			if((n!="")||(m!=""))
+				{r=confirm("你确定要重置吗？");
+				 if(r){return true}
+					else{return false};
+				};
+		}
+	</script>
+	<body>
+		<div class="main">
+			<div class="denglu">
+				<h3>欢迎登录</h3>
+				<form onsubmit="return zhanghao();" method="post" onreset="return chzhi();" action="">
+					用户名：<input type="text" name="username" id="username" value=""/><br /><br />
+					密&nbsp;&nbsp;码：<input type="password" name="pass" id="pass" /><br />
+					<p class="wj"><a href="#" class="wj1">忘记密码？</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#" class="wj1">免费注册</a></p>
+					<input type="submit" value="登录" name="submit" id="submit"/>&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="reset" value="重置" name="reset" id="reset" />
+				</form>
+			</div>
+			<div>
+				<form name="clock">
+				<input type="text" name="show" />
+				</form>
+			</div>
+			<input type="button" onclick="imag()">acvca</input>
+		</div>
+	</body>
+</html>
