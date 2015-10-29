@@ -46,12 +46,20 @@
 			position:absolute;
 			top:168px;
 			left:743px;
+			border:0;
 			}
 		.miaoshu{
 			position:absolute;
 			top:400px;
 			left:140px;
 				}
+		.zhc{
+			font-size:0.5em;
+			}
+		a{
+			text-decoration:none;
+			color:#c151b4;
+			}
 	</style>
 	<script>
 		function zhanghao()
@@ -59,13 +67,11 @@
 			var n=document.getElementById("pass").value;
 			var m=document.getElementById("username").value;
 			var mima=n.length;
-			
 			if((m>19999999999)||(m<10000000000))
 				{
-					alert("请输入正确的用户名！");
+					alert("请输入正确的手机号！");
 					return false;
 				}
-			
 			if(mima<8)
 				{
 				alert("请输入正确的密码！\n密码长度应为8~16位！");
@@ -97,16 +103,16 @@
 			var nihao="";
 			m=check(m);
 			s=check(s);
-			if((0<=h)&&(h<=6))
+			if((h>=0)&&(h<=6))
 				{nihao="凌晨好！"};
-			if((6<h)&&(h<=12))
+			if((h>6)&&(h<=12))
 				{nihao="上午好！"};
-			if((12<h)&&(h<=14))
+			if((h>12)&&(h<=14))
 				{nihao="中午好！"};
-			if((14<h)&&(h<=19))
+			if((h>14)&&(h<=19))
 				{nihao="下午好！"};
-			if((19<h)&&(h<=23))
-				{nihao="晚上好！晚安！"};
+			if((h>19)&&(h<=23))
+				{nihao="晚上好！"};
 			if((wel=="")||(wel==null))
 				{wel="HELLO"};
 			document.getElementById("sj").innerHTML=wel+"，"+nihao+" 当前时间是： "+h+":"+m+":"+s;
@@ -133,7 +139,7 @@
 		function dui()
 		{
 		m=document.getElementById("username").value;
-		if((m!="")&&(m!="手机/邮箱"))
+		if((m!="")&&(m!="请输入手机号"))
 			{
 			if((m<10000000000)||(m>19999999999))
 				{document.ch.src="images/001.jpg"}
@@ -143,12 +149,16 @@
 		setTimeout("dui()",50);
 		}
 		function yxd(m)
-		{
+		{ 
 		if(m.eflag!=true)
 			{
 			m.value="";
 			m.eflag=true;
-			};
+		}
+		}
+		function inf(){
+		m="《诗·郑风·出其东门》<br /><br />出其东门，有女如云。虽则如云，匪我思存。<br />郑玄笺：“此如云者，皆非我思所存也。”";
+		document.getElementById("jjie").innerHTML=m;
 		}
 	</script>
 	<body onload="sj();welcome();slide();dui()">
@@ -156,17 +166,25 @@
 			<div id="sj" class="sj"></div>
 			<div class="denglu">
 				<h3>欢迎登录</h3>
-				<form onsubmit="return zhanghao();" method="post" onreset="return chzhi();" action="www.baodu.com">
+				<form onsubmit="return zhanghao();" method="post" onreset="return chzhi();" action="http://www.baodu.com">
 					用户名：<input type="text" name="username" id="username" value="请输入手机号" onclick="yxd(this)" onblur="hui(this)"/><br /><br />
 					密&nbsp;&nbsp;码：<input type="password" name="pass" id="pass" /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="submit" value="登录" name="submit" id="submit"/>&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="reset" value="重置" name="reset" id="reset" />
 				</form>
-             <a href="#">忘记密码？</a>
+				<br />
+            <div class="zhc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">忘记密码？</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">免费注册</a></div>
 			</div>
 			<img alt="" src="" name="ch" class="ch" />
 			<img alt="sc" name="sc" id="sc" class="sc" src="images/1.jpg" />
 			<div class="miaoshu" id="miaoshu" class="miaoshu"></div>
+			<hr noshade /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+			<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+			<hr noshade class="fenjie" /><h3>思存工作室</h3>
+			<div class="jjie" id="jjie">
+			<p>“思存”一词起源于《诗.郑风.出其东门》<input type="button" onclick="inf()" value="原文" />。意为思念，铭记在心。</p>
+			<p>思存的口号：专注互联，精彩在线</p>			
+			</div>
 		</div>
 	</body>
 </html>
