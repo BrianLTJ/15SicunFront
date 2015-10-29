@@ -8,7 +8,7 @@
 		.main{
 			width:80%;
 			height:100%;
-			background-color:#ffcc00;
+			background-color:#afeeee;
 			border-left:3px solid #ffffff;
 			border-right:3px solid #ffffff;
 			text-align:center;
@@ -19,19 +19,33 @@
 		.denglu{
 			border-radius:20px;
 			border:5px solid #a1a1a1;
-			background-color:#ffffff;
-			width:250px;
-			height:250px;
+			background-color:#00ffff;
+			width:255px;
+			height:200px;
+			position:absolute;
+			left:800px;
+			top:100px;
 				}
 		body{
 			background-color:#ff3399;
 			}
-		.wj{
-			font-size:0.5em;
+		.sj{
+			background-color:#bebebe;
+			color:red;
 			}
-		a.wj1{
-			color:#ababab;
-			text-decoration:none;
+		.sc{
+			position:absolute;
+			left:10px;
+			top:50px;
+			width:420px;
+			height:330px;
+			}
+		.ch{
+			width:15px;
+			height:15px;
+			position:absolute;
+			top:168px;
+			left:1043px;
 			}
 	</style>
 	<script>
@@ -41,17 +55,17 @@
 			var m=document.getElementById("username").value;
 			var mima=n.length;
 			
-			if((m<=19999999999)&&(m>=10000000000))
+			if((m>19999999999)||(m<10000000000))
 				{
 					alert("请输入正确的手机号码！");
 					return false;
-				};
+				}
 			
-			/*if(mima<8)
+			if(mima<8)
 				{
 				alert("请输入正确的密码！\n密码长度应为8~16位！");
 				return false;
-				};*/
+				}
 		}
 		function chzhi()
 		{
@@ -63,26 +77,86 @@
 					else{return false};
 				};
 		}
+		var wel;
+		function welcome()
+		{
+			wel=prompt("请问怎么称呼？","JACK");
+			return wel;
+		}
+		function sj()
+		{
+			var today=new Date();
+			var h=today.getHours();
+			var m=today.getMinutes();
+			var s=today.getSeconds();
+			var nihao="";
+			m=check(m);
+			s=check(s);
+			if((0<=h)&&(h<=6))
+				{nihao="凌晨好！"};
+			if((6<h)&&(h<=12))
+				{nihao="上午好！"};
+			if((12<h)&&(h<=14))
+				{nihao="中午好！"};
+			if((14<h)&&(h<=19))
+				{nihao="下午好！"};
+			if((19<h)&&(h<=23))
+				{nihao="晚上好！晚安！"};
+			if((wel=="")||(wel==null))
+				{wel="HELLO"};
+			document.getElementById("sj").innerHTML=wel+"，"+nihao+" 当前时间是： "+h+":"+m+":"+s;
+			t=setTimeout("sj()",500);
+		}
+		function check(i)
+		{
+			if (i<10) 
+			  {i="0" + i};
+			 return i;
+		}
+		var n=1;
+		function slide()
+		{
+				document.sc.src="images/"+n+".jpg";
+				n++;
+				if(n>3)n=1;
+				setTimeout("slide()",2000);
+		}
+		function dui()
+		{
+		m=document.getElementById("username").value;
+		if((m!="")&&(m!="手机/邮箱"))
+			{
+			if((m<10000000000)||(m>19999999999))
+				{document.ch.src="images/001.jpg"}
+				else{document.ch.src="images/002.jpg"};
+			}
+			else{document.ch.src="";};
+		setTimeout("dui()",50);
+		}
+		function yxd(m)
+		{
+		if(m.eflag!=true)
+			{
+			m.value="";
+			m.eflag=true;
+			};
+		}
 	</script>
-	<body>
+	<body onload="sj();welcome();slide();dui()">
 		<div class="main">
+			<div id="sj" class="sj"></div>
 			<div class="denglu">
 				<h3>欢迎登录</h3>
-				<form onsubmit="return zhanghao();" method="post" onreset="return chzhi();" action="">
-					用户名：<input type="text" name="username" id="username" value=""/><br /><br />
-					密&nbsp;&nbsp;码：<input type="password" name="pass" id="pass" /><br />
-					<p class="wj"><a href="#" class="wj1">忘记密码？</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="#" class="wj1">免费注册</a></p>
+				<form onsubmit="return zhanghao();" method="post" onreset="return chzhi();" action="www.baodu.com">
+					用户名：<input type="text" name="username" id="username" value="手机/邮箱" onclick="yxd(this)" onblur="hui(this)"/><br /><br />
+					密&nbsp;&nbsp;码：<input type="password" name="pass" id="pass" /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="submit" value="登录" name="submit" id="submit"/>&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="reset" value="重置" name="reset" id="reset" />
 				</form>
+             <a href="#">忘记密码？</a>
 			</div>
-			<div>
-				<form name="clock">
-				<input type="text" name="show" />
-				</form>
-			</div>
-			<input type="button" onclick="imag()">acvca</input>
+			<img alt="" src="" name="ch" class="ch" />
+			<img alt="sc" name="sc" id="sc" class="sc" src="images/1.jpg" />
 		</div>
 	</body>
 </html>
